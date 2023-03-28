@@ -28,10 +28,17 @@ public class Carrito {
 		ItemCarrito item = new ItemCarrito(cantidad,producto);
 		this.listaItems.add(item);
 	}
+	public double precioFinal() {
+		double total=0.0;
+		for(ItemCarrito item :listaItems) {
+			total+= item.getCantidad()*item.getProducto().getPrecio();
+		}
+		return total*(1-descuento.getDescuento());
+	}
 	@Override
 	public String toString() {
 		return "Carrito [\nlistaItems=\n" + listaItems.toString() + ", \n descuento=" + descuento.toString() + ""
-				+ "\n]";
+				+ "\n] Precio total: "+precioFinal();
 	}
 	
 	
